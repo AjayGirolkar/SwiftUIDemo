@@ -11,9 +11,12 @@ import SwiftUI
 struct SwiftUIDemoApp: App {
     let persistenceController = PersistenceController.shared
 
+    @StateObject var order = Order()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+                .environmentObject(order)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
